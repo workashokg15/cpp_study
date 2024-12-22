@@ -1,1 +1,1 @@
-# cpp_study
+# Documentation for CPP study
