@@ -5,6 +5,10 @@
 using namespace std;
 using namespace common::ds_algo;
 
+//Compile with 
+// g++ -g -fsanitize=address -o bst bst.cpp
+//to find memory leaks
+
 template <typename T>
 class BST {
 public:
@@ -15,7 +19,7 @@ public:
     }
     void delete_node(T key)
     {
-        delete_node(root, bstnode);
+        delete_node(root, key);
     }
     BSTNode<T>* search_key(T key)
     {
@@ -63,8 +67,9 @@ private:
             temp = mininum_node(node->right);
             node->data = temp->data;
             node->right = delete_node(node->right, temp->data);
+            return node;
         }
-        
+        return node;
     }
 
     BSTNode<T>* search_key(BSTNode<T> *node,  T key)
@@ -92,12 +97,14 @@ private:
             if(current->left != nullptr) {
                 return insert_node(current->left, bstnode);
             }
+            cout << "inserting to left of : " << current->data << " <<== " << bstnode->data << endl;
             current->left = bstnode;
             return;
         } else {
             if(current->right != nullptr) {
                 return insert_node(current->right, bstnode);
             }
+            cout << "inserting to right of : " << current->data << " ==>> " << bstnode->data << endl;
             current->right = bstnode;
             return;
         }
@@ -118,7 +125,7 @@ void print_bst_pre_order(const BSTNode<T> *bstnode)
 
 
 template <typename T>
-void print_bst_pre_order(const BST<T> &bst)
+ void print_bst_pre_order(const BST<T> &bst)
 {
     const BSTNode<T> *bstnode = bst.root;
     print_bst_pre_order(bstnode);
@@ -177,6 +184,9 @@ int main()
     } else {
         cout << "Search failed for name_key : " << name_key << endl;
     }
-    
+
+    string name_del_key = "lalit";
+    name_tree.delete_node(name_del_key);
+    print_bst_pre_order(name_tree);   
     return 0;
 }
