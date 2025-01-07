@@ -1,6 +1,5 @@
 #include "common.hpp"
 #include <iostream>
-#include <vector>
 
 using namespace std;
 using namespace common::ds_algo;
@@ -12,7 +11,7 @@ using namespace common::ds_algo;
 template <typename T>
 class BST {
 public:
-    BST(BSTNode<T> *bstnode) : root(bstnode) {}
+    BST() : root(nullptr) {}
     void insert_node(BSTNode<T> *bstnode)
     {
         insert_node(root, bstnode);
@@ -25,9 +24,20 @@ public:
     {
         return search_key(root, key);    
     }
-    ~BST()
-    {
 
+    ~BST() {
+        //do post order traversal and delete all leaf nodes.
+        delete_all_nodes(root);        
+    }
+
+    void delete_all_nodes(BSTNode<T>* node)
+    {
+        if(node == nullptr)
+            return;
+        delete_all_nodes(node->left);
+        delete_all_nodes(node->right);
+        cout << "deleting node : " << node->data << endl;
+        delete(node);
     }
     template <typename U>
     friend void print_bst_pre_order(const BST<U> &bst);
@@ -89,8 +99,8 @@ private:
 
     void insert_node(BSTNode<T> *current, BSTNode<T> *bstnode)
     {
-        if(current == nullptr) {
-            current = bstnode;
+        if(root == nullptr) {
+            root = bstnode;
             return;
         }
         if(current->data > bstnode->data) {
@@ -125,68 +135,11 @@ void print_bst_pre_order(const BSTNode<T> *bstnode)
 
 
 template <typename T>
- void print_bst_pre_order(const BST<T> &bst)
-{
-    const BSTNode<T> *bstnode = bst.root;
+void print_bst_pre_order(const BST<T> &bst)
+{   
+    const BSTNode<T>* bstnode = bst.root;
     print_bst_pre_order(bstnode);
 }
 
 
 
-int main()
-{
-    cout << "BST impl example" << endl;
-
-    BST<int> bst_tree1(new BSTNode<int>{5}); 
-    bst_tree1.insert_node(new BSTNode<int>{3});
-    bst_tree1.insert_node(new BSTNode<int>{2});
-    bst_tree1.insert_node(new BSTNode<int>{4});
-    bst_tree1.insert_node(new BSTNode<int>{10});
-    bst_tree1.insert_node(new BSTNode<int>{8});
-    bst_tree1.insert_node(new BSTNode<int>{6});
-    bst_tree1.insert_node(new BSTNode<int>{12});
-    bst_tree1.insert_node(new BSTNode<int>{14});
-
-    print_bst_pre_order(bst_tree1);
-    int key = 8;
-
-    cout << "searching key " << key << endl; 
-    BSTNode<int>* node = bst_tree1.search_key(key);
-    if (node){
-        cout << "Node for key "<< key <<" found at : " << node;
-    } else {
-        cout << "Search failed for key : " << key << endl;
-    }
-
-    key = 7;
-
-    cout << "searching key " << key << endl; 
-    node = bst_tree1.search_key(key);
-    if (node){
-        cout << "Node for key "<< key <<" found at : " << node;
-    } else {
-        cout << "Search failed for key : " << key << endl;
-    }
-
-    vector<string> names = {"hamsu", "meera", "lalit", "zoan", "karthik", "marco"};
-    BST<string> name_tree{new BSTNode<string>{"sundar"}};
-    for (auto name : names) {
-        name_tree.insert_node(new BSTNode<string>{name});
-    }
-    cout << "\n\n" << "Name tree is : " << endl; 
-    print_bst_pre_order(name_tree);
-
-    string name_key = "meera";
-    cout << "searching key " << name_key << endl; 
-    BSTNode<string>*name_node = name_tree.search_key(name_key);
-    if (name_node){
-        cout << "Node for name_key "<< name_key <<" found at : " << node;
-    } else {
-        cout << "Search failed for name_key : " << name_key << endl;
-    }
-
-    string name_del_key = "lalit";
-    name_tree.delete_node(name_del_key);
-    print_bst_pre_order(name_tree);   
-    return 0;
-}
