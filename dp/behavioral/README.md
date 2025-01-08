@@ -13,7 +13,7 @@ Behavioral design patterns are concerned with algorithms and the assignment of r
 7. **Observer**: Defines a dependency between objects so that one object changes state, all its dependents are notified.
 8. **State**: Allows an object to alter its behavior when its internal state changes.
 9. **Strategy**: Defines a family of algorithms and makes them interchangeable.
-10. **Template Method**: Defines the skeleton of an algorithm, deferring some steps to subclasses.
+10. **Template Method**: Defines the skeleton of an algorithm, deferring some steps to subclasses. 
 11. **Visitor**: Represents an operation to be performed on elements of an object structure.
 
 ### Example
