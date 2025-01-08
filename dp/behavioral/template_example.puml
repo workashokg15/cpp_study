@@ -1,0 +1,41 @@
+/' TEMPLATE METHOD '/
+
+@startuml
+
+class AbstractPizzaClass {
+    + template_method()
+    # choose_cheese()
+    # choose_ingredients()
+    # prepare_sauce()
+    # prepare_dough()
+    # pour_ketchup_if_needed()
+}
+
+class MargarettaPizzaConcreteClass {
+    + choose_cheese()
+    + choose_ingredients()
+    + prepare_dough()
+}
+
+class SilsilattiPizzaConcreteClass {
+    + choose_cheese()
+    + choose_ingredients()
+}
+
+
+
+hide empty members
+
+AbstractPizzaClass <|-- MargarettaPizzaConcreteClass
+AbstractPizzaClass <|-- SilsilattiPizzaConcreteClass
+
+note as N1
+    <b><color:royalBlue>Template Method Example</color></b>
+    <b>Type:</b> Behavioral
+    AbstractPizzaClass is the abstract class for pizza making 
+    with all abstract implementations of steps, called by template_method()
+    MargarettaPizzaConcreteClass and SilsilattiPizzaConcreteClass overrides
+    specific functions of the AbstractPizzaClass
+end note
+
+@enduml
