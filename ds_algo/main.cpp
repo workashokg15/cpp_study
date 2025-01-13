@@ -35,5 +35,17 @@ int main()
     test_map();
 
     test_map_person();
+    cout << "MULTIMAP test"<< endl;
+    test_multimap();
+
+    cout << "STACK QUEUE TEST" << endl;
+    test_stack();
+    cout << endl;
+    cout << endl;
+    test_queue();
+
+    cout << endl;
+    test_vector_sort();
+    cout << endl;
     return 0;
 }

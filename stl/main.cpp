@@ -7,7 +7,11 @@
 #include <set>
 #include <iostream>
 #include <iomanip> 
+#include "complex.hpp"
+#include "template.hpp"
+#include "function_pointers.hpp"
 using namespace std;
+using namespace AshokProgramming;
 
 
 
@@ -24,7 +28,7 @@ int get_query() {
         long long a = A;
         char arr[16] = {0};
         char prarr[16] = {0};
-        printf("0x%x\n",a);
+        printf("0x%llx\n",a);
         //find number of decimals
         sprintf(arr, "%+.02f", B);
         int len = 1;
@@ -46,8 +50,17 @@ int get_query() {
 
 int main(int ac, char** av)
 {
-    get_query();
-    stl_study::test_vector();
+    //get_query();
+    //stl_study::test_vector();
+
+    test_complex_operator_overloading();
+    test_templates();
+
+    test_function_pointers();
+
+    test_object_slicing();
+
+    test_functors();
 }
 
 

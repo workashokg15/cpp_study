@@ -85,3 +85,15 @@ void print_map(const T& m, string map_name="map", string prefix="")
         cout << map_name << "[" << it->first<< "] = " << it->second << endl;
     }
 }
+template<typename T>
+void print_map2(const T& m, string map_name="map", string prefix="")
+{
+    if (prefix != "")
+        cout << prefix << endl;
+    for (auto it = m.begin(); it != m.end(); it++)
+    {
+        cout << map_name << "[" << it->first << "] = ";
+        it->second.print();
+    }
+}
+
