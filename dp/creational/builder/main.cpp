@@ -1,12 +1,25 @@
-#include "builder.hpp"
-
 // C++ Program to Implement Reflection Using Run Time Type
 // Information (RTTI)
 
 #include <cxxabi.h>
 #include <iostream>
 #include <typeinfo>
+
+#include "test.hpp"
 using namespace std;
+
+void check_rtti();
+int main()
+{
+    int i = 0;
+    //check_rtti();
+    test_basic_builder();
+    cout << "test " << i++ << "over" << flush << endl;
+    test_fluent_builder();
+    cout << "test " << i++ << "over" << flush << endl;
+    test_build_with_static_build();
+    cout << "test " << i++ << "over" << flush << endl;
+}
 
 
 // Base class with a virtual destructor
@@ -58,10 +71,3 @@ void check_rtti()
     delete basePtr; 
 }
 
-int main()
-{
-    //check_rtti();
-    test_basic_builder();
-    test_fluent_builder();
-    test_build_with_static_build();
-}
