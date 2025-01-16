@@ -24,8 +24,8 @@ void test_build_with_static_build()
 {
     cout << endl;
     cout << "building with fluent and static function in HtmlElement to build" << endl;
-    HtmlBuilder hb = HtmlElement::build("ants").
-                        add_child("ant1", "tom").
-                        add_child("ant2","HARRY");
+    HtmlBuilder hb = HtmlElement::build("ants");
+    hb.add_child("ant1", "tom").
+       add_child("ant2","HARRY");
     cout << hb.str() << endl;    
 }   

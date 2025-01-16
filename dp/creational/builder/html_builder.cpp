@@ -1,15 +1,10 @@
 #include "html_builder.hpp"
 #include "html_element.hpp"
 
-HtmlBuilder HtmlElement::build(string root_name)
-{
-    return {root_name};
-}
-
 HtmlBuilder::HtmlBuilder(string rootname){
-    root = new HtmlElement();
+    root = unique_ptr<HtmlElement>(new HtmlElement());
     root->name = rootname;
-    cout << "reached " << __FILE__ << ":" << __LINE__ << flush << endl;
+    //cout << "reached " << __FILE__ << ":" << __LINE__ << flush << endl;
     getchar();
 }
 HtmlBuilder& HtmlBuilder::add_child(string&& child_name, string&& child_text) {

@@ -8,17 +8,22 @@
 #include "test.hpp"
 using namespace std;
 
+#include <map>
+#include <string>
+#include <functional>
+
+extern map<std::string, function<void()>> g_test_mp;
+
 void check_rtti();
 int main()
 {
-    int i = 0;
+    size_t mp_size = g_test_mp.size();
     //check_rtti();
-    test_basic_builder();
-    cout << "test " << i++ << "over" << flush << endl;
-    test_fluent_builder();
-    cout << "test " << i++ << "over" << flush << endl;
-    test_build_with_static_build();
-    cout << "test " << i++ << "over" << flush << endl;
+    while(1) {
+        cout << "choose a test to run " << endl;
+        for (auto& c:g_test_mp)
+        cout << 
+    }
 }
 
 
