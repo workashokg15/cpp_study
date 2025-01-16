@@ -60,5 +60,8 @@ void check_rtti()
 
 int main()
 {
-    check_rtti();
+    //check_rtti();
+    test_basic_builder();
+    test_fluent_builder();
+    test_build_with_static_build();
 }
