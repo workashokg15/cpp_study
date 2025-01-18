@@ -15,6 +15,6 @@ class HtmlElement {
 public:
     friend class HtmlBuilder;
     std::string str(size_t indent=0) const;
-    static HtmlBuilder build(string root_name);
+    static HtmlBuilder create(string root_name);
 };
 

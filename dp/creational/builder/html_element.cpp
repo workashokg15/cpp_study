@@ -15,8 +15,8 @@ std::string HtmlElement::str(size_t indent) const {
     return oss.str();    
 }
 
-HtmlBuilder HtmlElement::build(string root_name)
+HtmlBuilder HtmlElement::create(string root_name)
 {
-    return {root_name};
+    return HtmlBuilder{root_name};
 }
 

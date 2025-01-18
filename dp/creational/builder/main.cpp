@@ -5,25 +5,13 @@
 #include <iostream>
 #include <typeinfo>
 
-#include "test.hpp"
 using namespace std;
 
-#include <map>
-#include <string>
-#include <functional>
-
-extern map<std::string, function<void()>> g_test_mp;
-
+void run_tests();
 void check_rtti();
 int main()
 {
-    size_t mp_size = g_test_mp.size();
-    //check_rtti();
-    while(1) {
-        cout << "choose a test to run " << endl;
-        for (auto& c:g_test_mp)
-        cout << 
-    }
+    run_tests();
 }
 
 
