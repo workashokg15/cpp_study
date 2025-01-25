@@ -1,0 +1,4 @@
+journal1
+entry no 1: i am doing this
+entry no 2: like a gentleman
+entry no 3: never minding the wind
