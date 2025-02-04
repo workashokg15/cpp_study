@@ -15,6 +15,10 @@ Creational design patterns are design patterns that deal with object creation me
 
 4. **Builder Pattern**
     - Separates the construction of a complex object from its representation so that the same construction process can create different representations.
+    - Builder is seperate component for building an object
+    - Can either give builder a constructor or return via static function
+    - Fluent builder - Return this
+    - Different Facets -->Use multiple inheritance via a base class to build an object with different attributes build via different derived classes.
 
 5. **Prototype Pattern**
     - Specifies the kinds of objects to create using a prototypical instance, and creates new objects by copying this prototype.
